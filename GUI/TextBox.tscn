@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://GUI/text-box.png" type="Texture" id=1]
 [ext_resource path="res://GUI/character-name-box.png" type="Texture" id=2]
@@ -34,7 +34,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("NameBackground:rect_position")
@@ -46,7 +46,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -244, -39 ) ]
+"values": [ Vector2( 22, -39 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -91,8 +91,49 @@ tracks/2/keys = {
 "values": [ Vector2( -244, -39 ), Vector2( 22, -39 ) ]
 }
 
+[sub_resource type="Animation" id=7]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_end"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("NameBackground:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 22, -39 ), Vector2( -244, -39 ) ]
+}
+
 [node name="TextBox" type="TextureRect"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -107,9 +148,9 @@ __meta__ = {
 }
 
 [node name="NameBackground" type="TextureRect" parent="."]
-margin_left = -244.0
+margin_left = 22.0
 margin_top = -39.0
-margin_right = 244.0
+margin_right = 510.0
 margin_bottom = 72.0
 texture = ExtResource( 2 )
 __meta__ = {
@@ -122,7 +163,7 @@ margin_top = 22.0
 margin_right = 167.0
 margin_bottom = 68.0
 theme = SubResource( 2 )
-text = "Nome"
+text = "Michela"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -133,7 +174,9 @@ margin_top = 46.0
 margin_right = 1216.0
 margin_bottom = 151.0
 theme = SubResource( 4 )
-text = "s fkjasdf asdjkfh f ;ksdjf kjsdfbg ;askjdbg .kszb ksjdgb vx basodb kjSD fg;as"
+visible_characters = 0
+percent_visible = 0.0
+text = "Ciao sono Emanuele"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -141,3 +184,6 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 5 )
 anims/fade_in = SubResource( 6 )
+anims/fade_out = SubResource( 7 )
+
+[node name="Tween" type="Tween" parent="."]
