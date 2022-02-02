@@ -8,7 +8,6 @@ func _ready():
 	yield(get_tree().create_timer(3), "timeout")
 	$Lisa.enter()
 	
-	display("Discorso di lisa", "Lisa")
 	
 	yield(get_tree().create_timer(3), "timeout")
 	$Lisa.leave()
