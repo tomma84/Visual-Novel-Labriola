@@ -8,41 +8,45 @@ onready var richTextLabel = $RichTextLabel
 onready var tween = $Tween
 onready var animationPlayer = $AnimationPlayer
 
-var _printing # Variabile di stato che specifica se il programma sta stampando un testo sullo schermo
-			  # può valore TRUE o FALSE
+var _printing = false # Variabile di stato che specifica se il programma sta stampando un testo sullo schermo
+					  # può valore TRUE o FALSE
 
 func _ready():
 	hide()
 	animationPlayer.play("RESET")
 	
 	
-	# TEST
-	yield(get_tree().create_timer(4), "timeout")
-	fade_in('Emanuele')
+#	# TEST
+#	yield(get_tree().create_timer(4), "timeout")
+#
+#	fade_in('')
+#	yield(self, "animation_completed")
+#
+#	display("In una bella giornata di Gennaio Emanuele spiega come fare una Visual Novel")
 
-	yield(self, "animation_completed")
-
-	display("Ciao Antonietta come va? Ciao Antonietta come va? Ciao Antonietta come va?", "Emanuele")
-	
-	yield(self, "next")
-	
-	display("Tutto bene grazie","Antonietta")
-	
-	yield(self, "next")
-	
-	display("Come è andata a te la giornata?","Antonietta")
-	
-	yield(self, "next")
-
-	display("Dovevo vedermi con Luca ma non è stato possibile perchè doveva studiare","Emanuele")
-
-	yield(self, "next")
-
-	display("Mi dispiace che non siete riusciti a vedervi","Antonietta")
-
-	yield(get_tree().create_timer(5), "timeout")
-	
-	fade_out()
+#	yield(self, "next")
+#
+#	display("Ciao Antonietta come va? Ciao Antonietta come va? Ciao Antonietta come va?", "Emanuele")
+#
+#	yield(self, "next")
+#
+#	display("Tutto bene grazie","Antonietta")
+#
+#	yield(self, "next")
+#
+#	display("Come è andata a te la giornata?","Antonietta")
+#
+#	yield(self, "next")
+#
+#	display("Dovevo vedermi con Luca ma non è stato possibile perchè doveva studiare","Emanuele")
+#
+#	yield(self, "next")
+#
+#	display("Mi dispiace che non siete riusciti a vedervi","Antonietta")
+#
+#	yield(get_tree().create_timer(5), "timeout")
+#
+#	fade_out()
 	
 
 
@@ -63,7 +67,7 @@ func fade_in(characterName):
 func fade_out():
 	animationPlayer.play("fade_out")
 
-func display(text, character_name, speed = 20.0):
+func display(text, character_name='Narratore', speed=20.0):
 	show()
 	nameLabel.text = character_name
 	var text_length = text.length()
