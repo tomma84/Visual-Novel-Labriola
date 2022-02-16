@@ -8,6 +8,7 @@ onready var textBox = $TextBox
 func _ready():
 	dani.enter()
 	sophia.enter()
+	lisa.enter()
 	
 	yield(sophia, "animation_completed")
 	
